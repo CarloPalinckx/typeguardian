@@ -1,0 +1,42 @@
+{
+  "author": "carlo palinckx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarloPalinckx/typeguardian/issues"
+  },
+  "homepage": "https://github.com/CarloPalinckx/typeguardian#readme",
+  "name": "typeguardian",
+  "version": "0.0.1",
+  "description": "typeguardian",
+  "main": "dist/index.js",
+  "types": "src/index.d.ts",
+  "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "@types/node": "^9.3.0",
+    "awesome-typescript-loader": "^3.4.1",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "jest": "^22.0.6",
+    "prettier": "^1.13.5",
+    "source-map-loader": "^0.2.3",
+    "ts-jest": "^22.0.1",
+    "tslint": "^5.7.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
+  },
+  "scripts": {
+    "test": "jest --config ./jest.config.json --coverage",
+    "build": "rimraf ./dist && webpack --config ./config/webpack/webpack.config.js",
+    "lint-fix": "tslint --fix --project ./config/typescript/tsconfig.json --config ./config/typescript/tslint.json ./src/**/*.{ts,tsx}",
+    "lint": "tslint --project ./config/typescript/tsconfig.json --config ./config/typescript/tslint.json ./src/**/*.{ts,tsx}",
+    "watch": "start-storybook -p 9001 -c ./config/storybook",
+    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "build-storybook -c ./config/storybook -o .out",
+    "cs-fix": "prettier --write ./src/**/*.{ts,tsx}",
+    "cs": "prettier --list-different ./src/**/*.{ts,tsx}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarloPalinckx/typeguardian/issues"
+  }
+}
