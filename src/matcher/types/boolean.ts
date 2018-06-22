@@ -1,7 +1,7 @@
-import { Configuration } from '../../types';
+import MatcherConfiguration from '../../configuration';
 
-const booleanConfiguration: Configuration<boolean> = {
+const booleanMatcher = new MatcherConfiguration({
     predicates: [v => typeof v === 'boolean'],
-};
+});
 
-export default booleanConfiguration;
+export default booleanMatcher;
