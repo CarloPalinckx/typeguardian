@@ -1,7 +1,7 @@
-import { Configuration } from '../../configuration';
+import MatcherConfiguration from '../../configuration';
 
-const stringConfiguration: Configuration<string> = {
+const stringMatcher = new MatcherConfiguration({
     predicates: [v => typeof v === 'string'],
-};
+});
 
-export default stringConfiguration;
+export default stringMatcher;
