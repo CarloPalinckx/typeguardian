@@ -1,1 +1,3 @@
-export { default as createSignature } from './signature';
+import createSignature from './signature';
+
+console.log(createSignature(({ string }) => string));

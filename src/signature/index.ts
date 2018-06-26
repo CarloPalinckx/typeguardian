@@ -1,27 +1,23 @@
-import MatcherConfiguration from '../configuration';
+import { Signature } from '../types';
 import createFactory from '../factory';
 import createMatcher from '../matcher';
+import MatcherConfiguration from '../configuration';
+import stringMatcher from '../matcher/types/string';
+import booleanMatcher from '../matcher/types/boolean';
 
-type Creator<T> = (matchers: Matchers) => MatcherConfiguration<T>;
-
-type Matchers = {
-    string: MatcherConfiguration<string>;
-};
-
-type Singature<T> = {
-    matches(value: T): boolean;
-    createWith(value: T): T;
-};
-
-const createSignature = <T>(creator: Creator<T>): Singature<T> => {
-    const configuration = creator({
-        string: MatcherConfiguration.string,
-    }).__configuration;
+const define = <T>(matcher: MatcherConfiguration<T>): Signature<T> => {
+    const { __configuration } = matcher;
 
     return {
-        matches: createMatcher(configuration),
-        createWith: createFactory(configuration),
+        matches: createMatcher(__configuration),
+        createWith: createFactory(__configuration),
     };
 };
 
-export default createSignature;
+const t = {
+    string: stringMatcher,
+    boolean: booleanMatcher,
+};
+
+export default t;
+export { define };

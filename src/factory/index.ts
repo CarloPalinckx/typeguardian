@@ -1,4 +1,4 @@
-import { Configuration } from '../configuration';
+import { Configuration } from '../types';
 import createMatcher from '../matcher';
 
 type Factory = <T>(value: T) => T;

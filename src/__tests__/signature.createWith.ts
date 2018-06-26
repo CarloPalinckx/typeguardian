@@ -1,27 +1,25 @@
-import createSignature from '../signature';
+import a, { default as an, define } from '../signature';
 
 describe('createWith', () => {
     it('should no-op when the value passes', () => {
-        const signature = createSignature(({ string }) => string);
+        const signature = define(a.string);
 
-        expect(signature.createWith('foo'));
+        expect(signature.createWith('foo')).toBe('foo');
     });
 
     it("should use the default when a value doesn't pass", () => {
-        const signature = createSignature(({ string }) =>
-            string.thatMatches(v => v === 'foo').withDefault('bar'),
-        );
+        const signature = define(a.string
+            .thatMatches(v => v === 'foo')
+            .withDefault('bar'));
 
         expect(signature.createWith('foo')).toBe('foo');
         expect(signature.createWith('foobar')).toBe('bar');
     });
 
     it("should throw an error when the value doesn't pass and no default is provided", () => {
-        const signature = createSignature(({ string }) =>
-            string.thatMatches(v => v === 'foo'),
-        );
+        const signature = define(a.string.thatMatches(v => v === 'foo'));
 
         expect(signature.createWith('foo')).toBe('foo');
-        expect(() => signature.createWith(1)).toThrow();
+        expect(() => signature.createWith(1 as any)).toThrow();
     });
 });
