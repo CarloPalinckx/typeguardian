@@ -1,6 +1,6 @@
-import a, { default as an, define } from '../signature';
+import { define, a } from '../';
 
-describe('createWith', () => {
+describe('signature.createWith', () => {
     it('should no-op when the value passes', () => {
         const signature = define(a.string);
 

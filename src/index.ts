@@ -1,3 +1,1 @@
-import createSignature from './signature';
-
-console.log(createSignature(({ string }) => string));
+export { define, a, a as an } from './signature';

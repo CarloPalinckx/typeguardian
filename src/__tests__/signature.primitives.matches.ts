@@ -1,6 +1,6 @@
-import a, { default as an, define } from '../signature';
+import { a, define } from '../';
 
-describe('matches', () => {
+describe('string.matches', () => {
     it('should check against a required loose string', () => {
         const signature = define(a.string);
 
