@@ -1,16 +1,12 @@
 import MatcherConfiguration from '../../configuration';
+import combinePredicates from '../../lib/combinePredicates';
 
 const createArrayConfiguration = arg => {
-    const combinedPredicate = value =>
-        arg.__configuration.predicates.reduce(
-            (matching, predicate): boolean => {
-                return predicate(value) ? matching : false;
-            },
-            true,
-        );
+    const combinedPredicate = combinePredicates(arg.__configuration);
 
     return new MatcherConfiguration<Array<any>>({
         predicates: [
+            value => Array.isArray(value),
             value =>
                 value.reduce(
                     (matching, item) =>

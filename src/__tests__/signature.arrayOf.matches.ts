@@ -1,6 +1,6 @@
 import { define, a, an } from '../';
 
-describe('arrayOf', () => {
+describe('arrayOf.matches', () => {
     it('should check against an array', () => {
         const signature = define(an.arrayOf(
             a.string.thatMatches(v => v.length > 3),
