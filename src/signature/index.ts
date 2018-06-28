@@ -5,6 +5,7 @@ import MatcherConfiguration from '../configuration';
 import stringMatcherConfiguration from '../matcher/types/string';
 import booleanMatcherConfiguration from '../matcher/types/boolean';
 import createUnionConfiguration from '../matcher/types/unionOf';
+import createArrayConfiguration from '../matcher/types/arrayOf';
 
 const define = <T>(matcher: MatcherConfiguration<T>): Signature<T> => {
     const { __configuration } = matcher;
@@ -19,6 +20,7 @@ const a = {
     string: stringMatcherConfiguration,
     boolean: booleanMatcherConfiguration,
     unionOf: createUnionConfiguration,
+    arrayOf: createArrayConfiguration,
 };
 
 export { define, a };

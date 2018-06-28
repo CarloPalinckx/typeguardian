@@ -15,8 +15,4 @@ export type Signature<T> = {
     createWith(value: T): T;
 };
 
-export type Creator<T> = (matchers: Matchers) => MatcherConfiguration<T>;
-
-export type Matchers = {
-    string: MatcherConfiguration<string>;
-};
+export type Define<T> = (matcher: MatcherConfiguration<T>) => Signature<T>;

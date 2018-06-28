@@ -1,24 +1,25 @@
 import MatcherConfiguration from '../../configuration';
 
 const createUnionConfiguration = <T>(
-    ...args: Array<MatcherConfiguration<T>>
+    ...args: Array<MatcherConfiguration<any>>
 ) => {
-    const combinedPredicate = value =>
-        args
-            .map(arg => (value): boolean =>
-                arg.__configuration.predicates.reduce(
-                    (matches, predicate) =>
-                        predicate(value) ? matches : false,
-                    true,
-                ),
-            )
-            .reduce(
-                (matches, predicate) => (predicate(value) ? true : matches),
-                false,
-            );
-
-    return new MatcherConfiguration({
-        predicates: [combinedPredicate],
+    return new MatcherConfiguration<T>({
+        predicates: [
+            value =>
+                args
+                    .map(arg => (value): boolean =>
+                        arg.__configuration.predicates.reduce(
+                            (matches, predicate) =>
+                                predicate(value) ? matches : false,
+                            true,
+                        ),
+                    )
+                    .reduce(
+                        (matches, predicate) =>
+                            predicate(value) ? true : matches,
+                        false,
+                    ),
+        ],
     });
 };
 
