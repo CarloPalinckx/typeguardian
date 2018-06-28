@@ -1,7 +1,7 @@
 import MatcherConfiguration from '../../configuration';
 
-const booleanMatcher = new MatcherConfiguration({
-    predicates: [v => typeof v === 'boolean'],
+const booleanMatcherConfiguration = new MatcherConfiguration({
+    predicates: [value => typeof value === 'boolean'],
 });
 
-export default booleanMatcher;
+export default booleanMatcherConfiguration;

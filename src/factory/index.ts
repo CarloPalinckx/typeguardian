@@ -1,8 +1,6 @@
 import { Configuration } from '../types';
 import createMatcher from '../matcher';
 
-type Factory = <T>(value: T) => T;
-
 const createFactory = <T>(configuration: Configuration<T>) => (value: T): T => {
     const matcher = createMatcher(configuration);
 
